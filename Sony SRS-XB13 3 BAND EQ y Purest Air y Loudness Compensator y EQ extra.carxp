@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE CARLA-PROJECT>
+<CARLA-PROJECT VERSION='2.0'>
+ <EngineSettings>
+  <ForceStereo>false</ForceStereo>
+  <PreferPluginBridges>false</PreferPluginBridges>
+  <PreferUiBridges>true</PreferUiBridges>
+  <UIsAlwaysOnTop>false</UIsAlwaysOnTop>
+  <MaxParameters>200</MaxParameters>
+  <UIBridgesTimeout>4000</UIBridgesTimeout>
+ </EngineSettings>
+
+ <Transport>
+  <BeatsPerMinute>120</BeatsPerMinute>
+ </Transport>
+
+ <!-- Loudness Compensator Stereo -->
+ <Plugin>
+  <Info>
+   <Type>VST2</Type>
+   <Name>Loudness Compensator Stereo</Name>
+   <Binary>/usr/lib/vst/lsp-plugins-vst-loud-comp-stereo.so</Binary>
+   <UniqueID>2004246832</UniqueID>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x9</Options>
+
+   <CustomData>
+    <Type>http://kxstudio.sf.net/ns/carla/property</Type>
+    <Key>CarlaSkinIsCompacted</Key>
+    <Value>false</Value>
+   </CustomData>
+
+   <Chunk>
+Q2NuSwAAAThGQkNoAAAAAXd2YTAAAAu4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoExTUFUAAACQAAALuExTUFUAAAAL
+YnlwYXNzAAAAAAAAAAAKaW5wdXQAQsf/7wAAAAhzdGQAQEAAAAAAAAhmZnQAQKAAAAAAAAt2b2x1bWUAwjwAAAAAAApyZWZlcgAAAAAAAAAACmhjbGlwAAAA
+AAAAAAAMaGNyYW5nZQAAAAAAAAAADGhjY2xlYW4AAAAAAAAAAAxyZWxzcGVjAD+AAAA=
+   </Chunk>
+  </Data>
+ </Plugin>
+
+ <!-- 3 Band EQ -->
+ <Plugin>
+  <Info>
+   <Type>VST2</Type>
+   <Name>3 Band EQ</Name>
+   <Binary>/usr/lib/vst/3BandEQ-vst.so</Binary>
+   <UniqueID>1144210769</UniqueID>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x1</Options>
+
+   <Parameter>
+    <Index>0</Index>
+    <Name>Low</Name>
+    <Value>0.968421041965485</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>1</Index>
+    <Name>Mid</Name>
+    <Value>0.515789449214935</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>2</Index>
+    <Name>High</Name>
+    <Value>0.947368443012238</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>3</Index>
+    <Name>Master</Name>
+    <Value>0.494736820459366</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>4</Index>
+    <Name>Low-Mid Freq</Name>
+    <Value>0.25</Value>
+   </Parameter>
+
+   <Parameter>
+    <Index>5</Index>
+    <Name>Mid-High Freq</Name>
+    <Value>0</Value>
+   </Parameter>
+
+   <CustomData>
+    <Type>http://kxstudio.sf.net/ns/carla/property</Type>
+    <Key>CarlaSkinIsCompacted</Key>
+    <Value>false</Value>
+   </CustomData>
+  </Data>
+ </Plugin>
+
+ <!-- EQ -->
+ <Plugin>
+  <Info>
+   <Type>VST2</Type>
+   <Name>EQ</Name>
+   <Binary>/home/marcelo/Descargas/THE WIRE/gunshot/linux/EQ.so</Binary>
+   <UniqueID>1701930353</UniqueID>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x9</Options>
+
+   <CustomData>
+    <Type>http://kxstudio.sf.net/ns/carla/property</Type>
+    <Key>CarlaSkinIsCompacted</Key>
+    <Value>false</Value>
+   </CustomData>
+
+   <Chunk>
+wcohPwAAAD8AAAA/AACAP1TjBT/NzMw+AAAAAAAAAD8=
+   </Chunk>
+  </Data>
+ </Plugin>
+
+ <!-- PurestAir -->
+ <Plugin>
+  <Info>
+   <Type>VST2</Type>
+   <Name>PurestAir</Name>
+   <Binary>/home/marcelo/Descargas/THE WIRE/gunshot/linux/PurestAir.so</Binary>
+   <UniqueID>1885432178</UniqueID>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <Volume>1.025662</Volume>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x9</Options>
+
+   <CustomData>
+    <Type>http://kxstudio.sf.net/ns/carla/property</Type>
+    <Key>CarlaSkinIsCompacted</Key>
+    <Value>false</Value>
+   </CustomData>
+
+   <Chunk>
+DLVMP/LSTT4AAIA/
+   </Chunk>
+  </Data>
+ </Plugin>
+
+ <ExternalPatchbay>
+  <Connection>
+   <Source>PulseAudio JACK Sink:front-left</Source>
+   <Target>Loudness Compensator Stereo:input_1</Target>
+  </Connection>
+  <Connection>
+   <Source>PulseAudio JACK Sink:front-right</Source>
+   <Target>Loudness Compensator Stereo:input_2</Target>
+  </Connection>
+  <Connection>
+   <Source>Loudness Compensator Stereo:output_1</Source>
+   <Target>3 Band EQ:input_1</Target>
+  </Connection>
+  <Connection>
+   <Source>Loudness Compensator Stereo:output_2</Source>
+   <Target>3 Band EQ:input_2</Target>
+  </Connection>
+  <Connection>
+   <Source>3 Band EQ:output_1</Source>
+   <Target>EQ:input_1</Target>
+  </Connection>
+  <Connection>
+   <Source>3 Band EQ:output_2</Source>
+   <Target>EQ:input_2</Target>
+  </Connection>
+  <Connection>
+   <Source>PurestAir:output_1</Source>
+   <Target>PulseAudio JACK Source:front-left</Target>
+  </Connection>
+  <Connection>
+   <Source>PurestAir:output_1</Source>
+   <Target>PulseAudio JACK Source:front-right</Target>
+  </Connection>
+  <Connection>
+   <Source>PurestAir:output_2</Source>
+   <Target>PulseAudio JACK Source:front-left</Target>
+  </Connection>
+  <Connection>
+   <Source>PurestAir:output_2</Source>
+   <Target>PulseAudio JACK Source:front-right</Target>
+  </Connection>
+  <Connection>
+   <Source>EQ:output_1</Source>
+   <Target>PurestAir:input_1</Target>
+  </Connection>
+  <Connection>
+   <Source>EQ:output_2</Source>
+   <Target>PurestAir:input_2</Target>
+  </Connection>
+ </ExternalPatchbay>
+</CARLA-PROJECT>
